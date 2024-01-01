@@ -1,43 +1,43 @@
+package Ex12;
+
 public class Ex12 {
 
     // ****************** EX1 ********************
-
+    /**
+     *This function finds the longest streak of digits in a given number
+     * <br><br>
+     * @param num: The remaining part of the number to process.
+     * @param countSequence: The current streak of repeated digits.
+     * @param longestSequence: The longest streak of digits found so far.
+     * @param checkDigit: The current digit to check for sequence.
+     * @return int: Return the longest streak of repeated digits found in the number.
+     **/
     public static int equalDigits(int num, int countSequence, int longestSequence, int checkDigit){
-        int currentNum;
+        int currentDigit;
 
-        if (num == 0){
-            if (countSequence > longestSequence)
-                longestSequence = countSequence;
-
+        if (num == 0)
             return longestSequence;
-        }
 
-        currentNum = num % 10;
+        currentDigit = num % 10;
 
-        if (currentNum == checkDigit)
-            equalDigits(num/10, countSequence++, longestSequence, checkDigit);
-        else{
-            if (countSequence > longestSequence)
-                longestSequence = countSequence;
+        if (currentDigit == checkDigit)
+            countSequence++;
+        else
+            countSequence = 1;
 
-            equalDigits(num/10, 0, longestSequence, currentNum);
-        }
+        if (countSequence > longestSequence)
+            longestSequence = countSequence;
 
-        return 0;
+        return equalDigits(num/10, countSequence, longestSequence, currentDigit);
     }
 
+    /**
+     * Finds the length of the longest sequence of repeated digits in a number.
+     *
+     * @param num: The number to find the sequence in.
+     * @return int: Return the longest streak of repeated digits found in the number.
+     **/
     public static int equalDigits (int num){
-        return equalDigits(num/10, 1, 0, num%10);
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println("EX1");
-        int num = 57779227;
-
-        System.out.println("The longest sequence is: " + equalDigits(num));
-
-        System.out.println("EX2");
-
+        return equalDigits(num, 0, 0, 0);
     }
 }
