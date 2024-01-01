@@ -40,4 +40,11 @@ public class Ex12 {
     public static int equalDigits (int num){
         return equalDigits(num, 0, 0, 0);
     }
+
+
+    // ****************** EX2 ********************
+
+    public static int subNumber(int num, int digit) {
+        
+    }
 }
