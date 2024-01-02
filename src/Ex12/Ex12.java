@@ -44,6 +44,16 @@ public class Ex12 {
 
     // ****************** EX2 ********************
 
+    /**
+     *A recursive function that finds all the digits in a number that divides by a given digit
+     * And returns it as a number
+     *
+     * For example: digit = 3, num = 387960 the number will find the numbers 3,9,6,0 and will return 3960
+     * <br><br>
+     * @param num: A number to find the sub number in.
+     * @param digit: The digits that all the sub number digits divides in.
+     * @return int: Return the sub number that all of its digits are digits that divides by the given digit
+     **/
     public static int subNumber(int num, int digit) {
         int currentDigit;
 
