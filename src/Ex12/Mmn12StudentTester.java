@@ -22,7 +22,7 @@ public class Mmn12StudentTester {
         }
         
         System.out.println("\n=============================== End equalDigits test===============================");
-/*
+
         System.out.println("\n=============================== Start subNumber test===============================");
         errorFound = false;
 
@@ -41,7 +41,7 @@ public class Mmn12StudentTester {
         }
 
         System.out.println("\n=============================== End subNumber test===============================");
-
+/*
         System.out.println("\n=============================== Start isSpecial test===============================");
         errorFound = false;
         
