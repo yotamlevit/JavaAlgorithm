@@ -41,12 +41,12 @@ public class Mmn12StudentTester {
         }
 
         System.out.println("\n=============================== End subNumber test===============================");
-/*
+
         System.out.println("\n=============================== Start isSpecial test===============================");
         errorFound = false;
         
         boolean expected3=true;
-        int num3=7;
+        int num3=13;
         boolean actual3 = Ex12.isSpecial(num3);
         
         if (actual3 != expected3) {
@@ -58,7 +58,7 @@ public class Mmn12StudentTester {
         if (!errorFound) {
             System.out.println("Testing isSpecial Successfully passed.");
         }
-*/
+
         System.out.println("\n=============================== End isSpecial test===============================");
     }
 }
