@@ -17,7 +17,7 @@ public class Ex13 {
      *
      * @param st1: The first input string.
      * @param st2: The second input string.
-     * @return String: Return True if the number is special, False if not.
+     * @return String: Returns the shortest common super-sequence string of st1 and st2.
      **/
     public static String minimalSt(String st1, String st2) {
 
@@ -34,42 +34,9 @@ public class Ex13 {
         } else {
             String option1 = st1.charAt(0) + minimalSt(st1.substring(1), st2);
             String option2 = st2.charAt(0) + minimalSt(st1, st2.substring(1));
+
+            // Returns the sorter string between the 2 options
             return option1.length() > option2.length() ? option2 : option1;
         }
     }
-
-
-    public static void main(String[] args) {
-        System.out.println("\n=============================== Start minimalSt test===============================");
-
-        String st1 = new String("AGGTAB");
-        String st2 = new String("GXTXAYB");
-
-        System.out.println(minimalSt(st1,st2));
-
-        System.out.println("\n=============================== End minimalSt test===============================");
-    }
 }
-
-
-/*
-String minimalSt = new String("");
-        //Brake condition 1
-        if (st1.length() == 0)
-            return st2;
-
-        //Brake condition 2
-        if (st2.length() == 0)
-            return st1;
-
-        if (st1.charAt(0) == st2.charAt(0)) {
-            return st1.charAt(0) + minimalSt(st1.substring(1), st2.substring(1));
-        }
-        minimalSt += st1.charAt(0);
-
-        if (st1.charAt(0) == st2.charAt(0)) {
-            return minimalSt + minimalSt(st1.substring(1), st2.substring(1));
-        }
-
-        return st1.charAt(0) + minimalSt(st1.substring(1), st2);
- */
