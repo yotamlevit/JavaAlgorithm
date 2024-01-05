@@ -1,7 +1,5 @@
 package Ex13;
 
-import Ex12.Ex12;
-
 public class Ex13 {
 
      /**
