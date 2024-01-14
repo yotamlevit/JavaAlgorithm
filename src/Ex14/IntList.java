@@ -32,6 +32,21 @@ public class IntList {
         return s;
     }
 
+
+    /**
+     * This function searches for a sequence of nodes in the list that their sum is num
+     <br><br>
+     * Time complexity: O(n^2), where n is the length of the list. ------------------------------------
+     *                 The function iterates through each element of the array once in a single for-loop.
+     *                 In the for-loop the function preforms a constant number of comparisons and assignments.
+     * <br><br>
+     * Space complexity: O(1), the function uses a fixed number of integers variable (1).
+     *                         These variables don't depend on the size of the input array
+     * <br><br>
+     *
+     * @param num: The number that is the wanted sum.
+     * @return boolean: True if there is streak of nodes that their sum is num false if not.
+     **/
     public boolean subListSum(int num) {
         int sum = 0;
 
