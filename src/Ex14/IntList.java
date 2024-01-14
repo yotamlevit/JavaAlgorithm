@@ -29,5 +29,22 @@ public class IntList {
             temp = temp.getNext();
         }
         s+= " null";
-        return s; }
+        return s;
+    }
+
+    public boolean subListSum(int num) {
+        int sum = 0;
+
+        for (IntNode originNode = _head; originNode != null; originNode = originNode.getNext()) {
+            sum = 0;
+
+            for (IntNode currentNode = originNode; currentNode != null && sum < num; currentNode = currentNode.getNext()) {
+                sum += currentNode.getValue();
+            }
+
+            if (sum == num)
+                return true;
+        }
+        return false;
+    }
 }
