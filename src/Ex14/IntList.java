@@ -39,7 +39,7 @@ public class IntList {
     /**
      * This function searches for a sequence of nodes in the list that their sum is num
      <br><br>
-     * Time complexity: O(n^2), where n is the length of the list. ------------------------------------
+     * Time complexity: O(n^2), where n is the length of the list.
      *                 The function iterates through each element of the array once in a single for-loop.
      *                 In the for-loop the function preforms a constant number of comparisons and assignments.
      * <br><br>
@@ -66,59 +66,63 @@ public class IntList {
         return false;
     }
 
-
-    private IntList calculatePrefixSum() {
-        IntList prefixSum = new IntList();
-        IntNode current = _head;
-        int sum = 0;
-
-        while (current != null) {
-            sum += current.getValue();
-            prefixSum.addToEnd(sum);
-            current = current.getNext();
-        }
-
-        return prefixSum;
-    }
-
-    /*
-    private IntNode averageNode(int sum, int count, IntNode current){
-        if (current.getNext().getNext() == null)
-            sum += current.getValue();
-            return sum/++count > current.getNext().getValue()
-    }
-    */
-
+    /**
+     * This function finds the node in the linked list that maximizes the absolute difference
+     * between the averages of the numbers in the two parts of the list divided by this node.
+     * The left part includes all nodes up to and including the current node,
+     * and the right part includes all nodes after the current node.
+     * Meaning -
+     * The function find the node that the difference between
+     * the average value of the node to its "left"
+     * and the average value of the nodes to its "right" is the biggest
+     *
+     * <br><br>
+     * Time complexity: O(n), where n is the length of the list.
+     *                  The function traverses the list three times - once for calculating the total length of the list,
+     *                  and again for populating the prefix sums.
+     *                  The final iteration for finding the maximum difference also takes linear time.
+     * <br><br>
+     Space Complexity: O(n), due to the additional array used to store prefix sums.
+     *                 The space required for this array scales linearly with the number of nodes in the list.
+     * <br><br>
+     *
+     *
+     * @return IntNode: The node that maximizes the absolute difference of averages.
+     *                  If the list is empty or has only one node the function returns null.
+     */
     public IntNode averageNode(){
         IntNode current = _head;
         IntNode maxDiffNode = _head;
         double prefixAvg = 0, postfixAvg = 0, currentDiff = 0, maxDiff = 0;
         int length = 0, sum = 0, index = 0;
 
+        // Checks if list is empty
         if (_head == null || _head.getNext() == null) {
             return null;
         }
 
-
+        //Finds the list length
         while (current != null) {
             length++;
             current = current.getNext();
         }
 
-        int[] cumulativeSums = new int[length];
+        // An array that will contain the prefix sum for each node
+        int[] prefixSums = new int[length];
 
+        // Calculate the prefixf sums
         for (current = _head; current != null; current = current.getNext()) {
             sum += current.getValue();
-            cumulativeSums[index++] = sum;
+            prefixSums[index++] = sum;
         }
 
         index = 0;
 
+        // Finds the node will the biggest difference between his prefix average and postfix average
         for (current = _head; current.getNext() != null; current = current.getNext()) {
-            prefixAvg = (double) cumulativeSums[index] / (index + 1);
-            postfixAvg = (double) (cumulativeSums[length-1] - cumulativeSums[index]) / (length - index -1);
+            prefixAvg = (double) prefixSums[index] / (index + 1);
+            postfixAvg = (double) (prefixSums[length-1] - prefixSums[index]) / (length - index -1);
             currentDiff = Math.abs(prefixAvg - postfixAvg);
-            System.out.println("Prefix: " + prefixAvg + "|    Postfix: " + postfixAvg + "|      currentdiff: "+ currentDiff + "|   maxDiffValue: " + maxDiffNode.getValue());
             if (currentDiff >= maxDiff) {
                 maxDiff = currentDiff;
                 maxDiffNode = current;
@@ -127,7 +131,6 @@ public class IntList {
             index++;
         }
 
-        System.out.println("---------------");
         return maxDiffNode;
     }
 }
