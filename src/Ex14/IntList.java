@@ -83,7 +83,7 @@ public class IntList {
      *                  The final iteration for finding the maximum difference also takes linear time.
      * <br><br>
      Space Complexity: O(n), due to the additional array used to store prefix sums.
-     *                 The space required for this array scales linearly with the number of nodes in the list.
+     *                 The space required for this array scales linearly with the number of nodes in the list.q
      * <br><br>
      *
      *
