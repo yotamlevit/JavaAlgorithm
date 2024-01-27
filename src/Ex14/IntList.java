@@ -1,5 +1,8 @@
 package Ex14;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class IntList {
     private IntNode _head;
     public IntList( ) {
@@ -61,5 +64,70 @@ public class IntList {
                 return true;
         }
         return false;
+    }
+
+
+    private IntList calculatePrefixSum() {
+        IntList prefixSum = new IntList();
+        IntNode current = _head;
+        int sum = 0;
+
+        while (current != null) {
+            sum += current.getValue();
+            prefixSum.addToEnd(sum);
+            current = current.getNext();
+        }
+
+        return prefixSum;
+    }
+
+    /*
+    private IntNode averageNode(int sum, int count, IntNode current){
+        if (current.getNext().getNext() == null)
+            sum += current.getValue();
+            return sum/++count > current.getNext().getValue()
+    }
+    */
+
+    public IntNode averageNode(){
+        IntNode current = _head;
+        IntNode maxDiffNode = _head;
+        double prefixAvg = 0, postfixAvg = 0, currentDiff = 0, maxDiff = 0;
+        int length = 0, sum = 0, index = 0;
+
+        if (_head == null || _head.getNext() == null) {
+            return null;
+        }
+
+
+        while (current != null) {
+            length++;
+            current = current.getNext();
+        }
+
+        int[] cumulativeSums = new int[length];
+
+        for (current = _head; current != null; current = current.getNext()) {
+            sum += current.getValue();
+            cumulativeSums[index++] = sum;
+        }
+
+        index = 0;
+
+        for (current = _head; current.getNext() != null; current = current.getNext()) {
+            prefixAvg = (double) cumulativeSums[index] / (index + 1);
+            postfixAvg = (double) (cumulativeSums[length-1] - cumulativeSums[index]) / (length - index -1);
+            currentDiff = Math.abs(prefixAvg - postfixAvg);
+            System.out.println("Prefix: " + prefixAvg + "|    Postfix: " + postfixAvg + "|      currentdiff: "+ currentDiff + "|   maxDiffValue: " + maxDiffNode.getValue());
+            if (currentDiff >= maxDiff) {
+                maxDiff = currentDiff;
+                maxDiffNode = current;
+            }
+
+            index++;
+        }
+
+        System.out.println("---------------");
+        return maxDiffNode;
     }
 }
