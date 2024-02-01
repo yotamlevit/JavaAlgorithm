@@ -76,6 +76,68 @@ public class Ex14Tester {
                 " (Expected: \"" + expectedNodeValue + "\", Got: \"" + result.getValue() + "\")");
     }
 
+    private static IntListTwo[] ex3ArrangeIntLists() {
+        IntListTwo[] lists = new IntListTwo[2];
+        IntListTwo intList = new IntListTwo();
+
+        intList.addToEnd(1);
+        System.out.println(intList.toStringReverse());
+        intList.addToEnd(2);
+        System.out.println(intList.toStringReverse());
+        intList.addToEnd(3);
+        System.out.println(intList.toStringReverse());
+        intList.addToEnd(4);
+        System.out.println(intList.toStringReverse());
+
+
+        lists[0] = intList;
+
+        intList = new IntListTwo();
+
+        intList.addToEnd(1);
+        intList.addToEnd(9);
+        intList.addToEnd(3);
+        intList.addToEnd(4);
+
+        lists[1] = intList;
+
+        return lists;
+    }
+
+    private static void testEx3() {
+        boolean result, expected;
+        System.out.println("- Arrage Lists For Ex3 - ");
+        IntListTwo[] ex3Lists = ex3ArrangeIntLists();
+        System.out.println("- Test Add To end Ex2 - ");
+
+        testAddToEnd(ex3Lists[0], -2000000, "{1, 2, 3, 4, -2000000}");
+        testToString(ex3Lists[1], "{1, 9, 3, 4}");
+        testToStringReverse(ex3Lists[1], "{4, 3, 9, 1}");
+    }
+
+    private static void testAddToEnd(IntListTwo list, int lastValue, String expectedResult) {
+        String before = list.toString();
+        list.addToEnd(lastValue);
+        String result = list.toString();
+        System.out.println("Test case {" + before + "} " +
+                (result.equals(expectedResult) ? "PASS" : "FAIL") +
+                " (Expected: \"" + expectedResult + "\", Got: \"" + result + "\")");
+    }
+
+    private static void testToString(IntListTwo list, String expectedOutput) {
+        String result = list.toString();
+        System.out.println("Test case {" + list.toString() + "} " +
+                (result.equals(expectedOutput) ? "PASS" : "FAIL") +
+                " (Expected: \"" + expectedOutput + "\", Got: \"" + result + "\")");
+    }
+
+    private static void testToStringReverse(IntListTwo list, String expectedOutput) {
+        String result = list.toStringReverse();
+        System.out.println("Test case {" + list.toString() + "} " +
+                (result.equals(expectedOutput) ? "PASS" : "FAIL") +
+                " (Expected: \"" + expectedOutput + "\", Got: \"" + result + "\")");
+    }
+
     public static void main(String[] args) {
         System.out.println("------------------ Start Ex1 ------------------------ ");
 
@@ -88,5 +150,10 @@ public class Ex14Tester {
         testAverageNode();
 
         System.out.println("------------------ Finish Ex2 ------------------------ ");
+        System.out.println("------------------ Start Ex3 ------------------------ ");
+
+        testEx3();
+
+        System.out.println("------------------ Finish Ex3 ------------------------ ");
     }
 }
