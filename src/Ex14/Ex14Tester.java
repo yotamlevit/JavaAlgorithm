@@ -77,7 +77,7 @@ public class Ex14Tester {
     }
 
     private static IntListTwo[] ex3ArrangeIntLists() {
-        IntListTwo[] lists = new IntListTwo[2];
+        IntListTwo[] lists = new IntListTwo[3];
         IntListTwo intList = new IntListTwo();
 
         intList.addToEnd(1);
@@ -97,6 +97,8 @@ public class Ex14Tester {
 
         lists[1] = intList;
 
+        lists[2] = new IntListTwo();
+
         return lists;
     }
 
@@ -109,8 +111,10 @@ public class Ex14Tester {
         testAddToEnd(ex3Lists[0], -2000000, "{1, 2, 3, 4, -2000000}");
         System.out.println("- Test Add To String Ex3 - ");
         testToString(ex3Lists[1], "{1, 9, 3, 4}");
+        testToString(ex3Lists[2], "{}");
         System.out.println("- Test Add To String reverse Ex3 - ");
         testToStringReverse(ex3Lists[1], "{4, 3, 9, 1}");
+        testToStringReverse(ex3Lists[2], "{}");
     }
 
     private static void testAddToEnd(IntListTwo list, int lastValue, String expectedResult) {

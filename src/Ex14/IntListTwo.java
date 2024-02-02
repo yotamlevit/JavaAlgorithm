@@ -30,6 +30,9 @@ public class IntListTwo {
     public String toString() {
         String str = "{";
 
+        if (_head == null)
+            return str + "}";
+
         if (_tail == null)
             return str + _head.getNum() + "}";
 
@@ -51,6 +54,9 @@ public class IntListTwo {
     }
 
     public String toStringReverse() {
+        if (_head == null)
+            return "{}";
+        
         return "{" + toStringReverse(_tail);
     }
 
