@@ -62,7 +62,7 @@ public class Ex14Tester {
         boolean result, expected;
         System.out.println("- Arrage Lists For Ex2 - ");
         IntList[] ex2Lists = ex2ArrangeIntLists();
-        System.out.println("- Test subListSum Ex1 - ");
+        System.out.println("- Test AverageNode Ex1 - ");
 
         testAverageNode(ex2Lists[0], -2);
         testAverageNode(ex2Lists[1], 0);
@@ -81,13 +81,9 @@ public class Ex14Tester {
         IntListTwo intList = new IntListTwo();
 
         intList.addToEnd(1);
-        System.out.println(intList.toStringReverse());
         intList.addToEnd(2);
-        System.out.println(intList.toStringReverse());
         intList.addToEnd(3);
-        System.out.println(intList.toStringReverse());
         intList.addToEnd(4);
-        System.out.println(intList.toStringReverse());
 
 
         lists[0] = intList;
@@ -108,10 +104,12 @@ public class Ex14Tester {
         boolean result, expected;
         System.out.println("- Arrage Lists For Ex3 - ");
         IntListTwo[] ex3Lists = ex3ArrangeIntLists();
-        System.out.println("- Test Add To end Ex2 - ");
+        System.out.println("- Test Add To end Ex3 - ");
 
         testAddToEnd(ex3Lists[0], -2000000, "{1, 2, 3, 4, -2000000}");
+        System.out.println("- Test Add To String Ex3 - ");
         testToString(ex3Lists[1], "{1, 9, 3, 4}");
+        System.out.println("- Test Add To String reverse Ex3 - ");
         testToStringReverse(ex3Lists[1], "{4, 3, 9, 1}");
     }
 
@@ -138,6 +136,56 @@ public class Ex14Tester {
                 " (Expected: \"" + expectedOutput + "\", Got: \"" + result + "\")");
     }
 
+    private static IntListTwo[] ex4ArrangeIntLists() {
+        IntListTwo[] lists = new IntListTwo[2];
+        IntListTwo intList = new IntListTwo();
+
+        intList.addToEnd(2);
+        intList.addToEnd(4);
+        intList.addToEnd(1);
+        intList.addToEnd(6);
+        intList.addToEnd(4);
+        intList.addToEnd(2);
+        intList.addToEnd(4);
+        intList.addToEnd(3);
+        intList.addToEnd(5);
+
+
+        lists[0] = intList;
+
+        intList = new IntListTwo();
+
+        intList.addToEnd(1);
+        intList.addToEnd(4);
+        intList.addToEnd(3);
+        intList.addToEnd(1);
+        intList.addToEnd(2);
+        intList.addToEnd(4);
+        intList.addToEnd(3);
+
+        lists[1] = intList;
+
+        return lists;
+    }
+
+    private static void testIsWay() {
+        boolean result, expected;
+        System.out.println("- Arrage IntList Ex4 - ");
+        IntListTwo[] ex3Lists = ex4ArrangeIntLists();
+        System.out.println("- Test isWay Ex4 - ");
+
+        testIsWay(ex3Lists[0], true);
+        testIsWay(ex3Lists[1], false);
+
+    }
+
+    private static void testIsWay(IntListTwo list, boolean expected) {
+        boolean result = list.isWay();
+        System.out.println("Test case {" + list.toString() + "} " +
+                (result == expected ? "PASS" : "FAIL") +
+                " (Expected: \"" + expected + "\", Got: \"" + result + "\")");
+    }
+
     public static void main(String[] args) {
         System.out.println("------------------ Start Ex1 ------------------------ ");
 
@@ -155,5 +203,10 @@ public class Ex14Tester {
         testEx3();
 
         System.out.println("------------------ Finish Ex3 ------------------------ ");
+        System.out.println("------------------ Start Ex4 ------------------------ ");
+
+        testIsWay();
+
+        System.out.println("------------------ Finish Ex4 ------------------------ ");
     }
 }

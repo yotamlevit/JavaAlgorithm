@@ -9,7 +9,6 @@ public class IntListTwo {
     }
 
     public void addToEnd(int num) {
-        System.out.println(num);
         IntNodeTwo newNode = new IntNodeTwo(num);
         //Checks is the list is empty
         if (_head == null) {
@@ -53,5 +52,33 @@ public class IntListTwo {
 
     public String toStringReverse() {
         return "{" + toStringReverse(_tail);
+    }
+
+    private boolean isWay(IntNodeTwo currentNode, IntNodeTwo leftBoundaryNode,int steps, boolean goRight) {
+        // Brake condition - there is a way in the list
+        if (currentNode == null || currentNode.getNum() == 0)
+            return false;
+
+        //Move Right/Left on the list
+        if (steps > 0)
+            return isWay(goRight ? currentNode.getNext() : currentNode.getPrev(), leftBoundaryNode, --steps, goRight);
+
+
+        // Brake condition - Got to tail, there is a way in the list
+        if (currentNode == _tail)
+            return true;
+
+        if (currentNode == leftBoundaryNode)
+            return false;
+
+        if (!goRight){
+            leftBoundaryNode = currentNode;
+        }
+
+        return isWay(currentNode, leftBoundaryNode, currentNode.getNum(), true) || isWay(currentNode, leftBoundaryNode, currentNode.getNum(), false);
+    }
+
+    public boolean isWay() {
+        return isWay(_head, null, 0, false);
     }
 }
