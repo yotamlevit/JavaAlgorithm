@@ -1,7 +1,6 @@
-package Ex14;
+// Author: Yotam Levit
 
-import java.util.HashMap;
-import java.util.Map;
+package Ex14;
 
 public class IntList {
     private IntNode _head;
